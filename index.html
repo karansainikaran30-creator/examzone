@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ExamZone — Free Study Material & Question Papers</title>
+  <meta name="description" content="Free study material, previous year question papers, and notes for all competitive exams. SSC, UPSC, Banking, Railway and more."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;800&family=Hind:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0d1117;
+      --surface: #161b22;
+      --card: #1c2330;
+      --border: #30363d;
+      --accent: #f7c948;
+      --accent2: #58a6ff;
+      --accent3: #3fb950;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --danger: #f85149;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Hind', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* NAV */
+    nav {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 0 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      font-family: 'Baloo 2', cursive;
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--accent);
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+
+    .logo span { color: var(--accent2); }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 28px;
+    }
+
+    nav ul a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    nav ul a:hover { color: var(--text); }
+
+    .nav-btn {
+      background: var(--accent);
+      color: #000;
+      padding: 8px 18px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .nav-btn:hover { opacity: 0.85; }
+
+    /* HERO */
+    .hero {
+      padding: 72px 5% 56px;
+      text-align: center;
+      background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(88,166,255,0.12), transparent);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(247,201,72,0.12);
+      color: var(--accent);
+      border: 1px solid rgba(247,201,72,0.3);
+      padding: 4px 14px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      margin-bottom: 20px;
+      letter-spacing: 0.5px;
+    }
+
+    .hero h1 {
+      font-family: 'Baloo 2', cursive;
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 18px;
+      background: linear-gradient(135deg, #e6edf3 40%, #58a6ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.1rem;
+      max-width: 560px;
+      margin: 0 auto 32px;
+      line-height: 1.7;
+    }
+
+    /* SEARCH */
+    .search-bar {
+      max-width: 540px;
+      margin: 0 auto;
+      display: flex;
+      gap: 0;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+
+    .search-bar:focus-within { border-color: var(--accent2); }
+
+    .search-bar input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      padding: 14px 18px;
+      color: var(--text);
+      font-size: 1rem;
+      font-family: 'Hind', sans-serif;
+    }
+
+    .search-bar input::placeholder { color: var(--muted); }
+
+    .search-bar button {
+      background: var(--accent2);
+      border: none;
+      color: #fff;
+      padding: 0 22px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .search-bar button:hover { background: #4c97f0; }
+
+    /* STATS */
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      padding: 28px 5%;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+      flex-wrap: wrap;
+    }
+
+    .stat { text-align: center; }
+    .stat-num {
+      font-family: 'Baloo 2', cursive;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--accent);
+    }
+    .stat-label { color: var(--muted); font-size: 0.85rem; }
+
+    /* SECTION */
+    .section {
+      padding: 52px 5%;
+    }
+
+    .section-title {
+      font-family: 'Baloo 2', cursive;
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .section-sub {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 32px;
+    }
+
+    /* EXAM CATEGORY GRID */
+    .exam-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+    }
+
+    .exam-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px 18px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+      display: block;
+    }
+
+    .exam-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent2);
+      box-shadow: 0 8px 24px rgba(88,166,255,0.1);
+    }
+
+    .exam-icon { font-size: 2rem; margin-bottom: 12px; }
+    .exam-name {
+      font-family: 'Baloo 2', cursive;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .exam-count { color: var(--muted); font-size: 0.82rem; }
+
+    /* MATERIAL CARDS */
+    .material-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 18px;
+    }
+
+    .material-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .material-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.3);
+    }
+
+    .card-top {
+      padding: 20px 20px 12px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .card-type-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+
+    .type-pdf { background: rgba(248,81,73,0.15); }
+    .type-notes { background: rgba(63,185,80,0.15); }
+    .type-qp { background: rgba(88,166,255,0.15); }
+
+    .card-info { flex: 1; }
+
+    .card-title {
+      font-family: 'Baloo 2', cursive;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+      color: var(--text);
+    }
+
+    .card-exam {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .card-tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      background: rgba(88,166,255,0.1);
+      color: var(--accent2);
+      border: 1px solid rgba(88,166,255,0.2);
+      padding: 2px 10px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+    }
+
+    .tag.green {
+      background: rgba(63,185,80,0.1);
+      color: var(--accent3);
+      border-color: rgba(63,185,80,0.2);
+    }
+
+    .card-bottom {
+      padding: 12px 20px 16px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .card-meta { color: var(--muted); font-size: 0.8rem; }
+
+    .download-btn {
+      background: var(--accent2);
+      color: #fff;
+      border: none;
+      padding: 7px 16px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: background 0.2s;
+    }
+
+    .download-btn:hover { background: #4c97f0; }
+    .download-btn.green { background: var(--accent3); }
+    .download-btn.green:hover { background: #35a545; }
+
+    /* FOOTER */
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 36px 5%;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    footer a { color: var(--accent2); text-decoration: none; }
+
+    /* FILTER TABS */
+    .filter-tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .filter-tab {
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 7px 18px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .filter-tab.active, .filter-tab:hover {
+      background: var(--accent2);
+      border-color: var(--accent2);
+      color: #fff;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 640px) {
+      nav ul { display: none; }
+      .stats { gap: 24px; }
+    }
+
+    /* MODAL OVERLAY */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.7);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      max-width: 480px;
+      width: 100%;
+    }
+    .modal h3 {
+      font-family: 'Baloo 2', cursive;
+      font-size: 1.3rem;
+      margin-bottom: 16px;
+    }
+    .modal p { color: var(--muted); font-size: 0.95rem; line-height: 1.7; margin-bottom: 20px; }
+    .modal-close {
+      background: var(--border);
+      border: none;
+      color: var(--text);
+      padding: 10px 24px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">Exam<span>Zone</span></a>
+  <ul>
+    <li><a href="#exams">Exams</a></li>
+    <li><a href="#notes">Notes</a></li>
+    <li><a href="#papers">Question Papers</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+  <a href="#papers" class="nav-btn">📥 Download Free</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">✨ 100% Free Study Material</div>
+  <h1>Apni Taiyari Ko<br/>Next Level Pe Le Jaao</h1>
+  <p>SSC, UPSC, Banking, Railway aur aur bhi exams ke liye free notes, question papers aur study material ek hi jagah pe.</p>
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Exam ya topic search karo... jaise SSC GK Notes" />
+    <button onclick="searchMaterial()">🔍</button>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat">
+    <div class="stat-num">500+</div>
+    <div class="stat-label">Study Materials</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">20+</div>
+    <div class="stat-label">Exams Covered</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">Free</div>
+    <div class="stat-label">Hamesha ke liye</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">10K+</div>
+    <div class="stat-label">Students</div>
+  </div>
+</div>
+
+<!-- EXAM CATEGORIES -->
+<section class="section" id="exams">
+  <div class="section-title">📚 Exam Categories</div>
+  <div class="section-sub">Apna exam choose karo aur study material download karo</div>
+  <div class="exam-grid">
+    <a href="#papers" class="exam-card">
+      <div class="exam-icon">🏛️</div>
+      <div class="exam-name">UPSC</div>
+      <div class="exam-count">45 materials</div>
+    </a>
+    <a href="#papers" class="exam-card">
+      <div class="exam-icon">📋</div>
+      <div class="exam-name">SSC CGL</div>
+      <div class="exam-count">62 materials</div>
+    </a>
+    <a href="#papers" class="exam-card">
+      <div class="exam-icon">🏦</div>
+      <div class="exam-name">Banking (IBPS)</div>
+      <div class="exam-count">38 materials</div>
+    </a>
+    <a href="#papers" class="exam-card">
+      <div class="exam-icon">🚂</div>
+      <div class="exam-name">Railway (RRB)</div>
+      <div class="exam-count">41 materials</div>
+    </a>
+    <a href="#papers" class="exam-card">
+      <div class="exam-icon">👮</div>
+      <div class="exam-name">Police / UPPRPB</div>
+      <div class="exam-count">28 materials</div>
+    </a>
+    <a href="#papers" class="exam-card">
+      <div class="exam-icon">🎓</div>
+      <div class="exam-name">NEET / JEE</div>
+      <div class="exam-count">55 materials</div>
+    </a>
+    <a href="#papers" class="exam-card">
+      <div class="exam-icon">📖</div>
+      <div class="exam-name">State PCS</div>
+      <div class="exam-count">33 materials</div>
+    </a>
+    <a href="#papers" class="exam-card">
+      <div class="exam-icon">✈️</div>
+      <div class="exam-name">NDA / CDS</div>
+      <div class="exam-count">22 materials</div>
+    </a>
+  </div>
+</section>
+
+<!-- STUDY MATERIALS -->
+<section class="section" id="papers" style="background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+  <div class="section-title">📄 Study Material & Question Papers</div>
+  <div class="section-sub">Latest question papers aur notes — bilkul free download karo</div>
+
+  <div class="filter-tabs">
+    <button class="filter-tab active" onclick="filterCards('all', this)">All</button>
+    <button class="filter-tab" onclick="filterCards('qp', this)">Question Papers</button>
+    <button class="filter-tab" onclick="filterCards('notes', this)">Notes</button>
+    <button class="filter-tab" onclick="filterCards('pdf', this)">PDF Books</button>
+  </div>
+
+  <div class="material-grid" id="materialGrid">
+
+    <!-- Card 1 -->
+    <div class="material-card" data-type="qp" data-exam="ssc">
+      <div class="card-top">
+        <div class="card-type-icon type-qp">📝</div>
+        <div class="card-info">
+          <div class="card-title">SSC CGL 2023 Question Paper</div>
+          <div class="card-exam">SSC CGL • Tier 1</div>
+          <div class="card-tags">
+            <span class="tag">Question Paper</span>
+            <span class="tag green">Answer Key</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-bottom">
+        <span class="card-meta">📅 2023 • 📄 24 pages</span>
+        <a href="papers/ssc-cgl-2023.pdf" class="download-btn" download>⬇ Download</a>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="material-card" data-type="notes" data-exam="upsc">
+      <div class="card-top">
+        <div class="card-type-icon type-notes">📒</div>
+        <div class="card-info">
+          <div class="card-title">UPSC GS Paper 1 – History Notes</div>
+          <div class="card-exam">UPSC • General Studies</div>
+          <div class="card-tags">
+            <span class="tag">Notes</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-bottom">
+        <span class="card-meta">📅 2024 • 📄 48 pages</span>
+        <a href="notes/upsc-history-notes.pdf" class="download-btn green" download>⬇ Download</a>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="material-card" data-type="qp" data-exam="bank">
+      <div class="card-top">
+        <div class="card-type-icon type-qp">📝</div>
+        <div class="card-info">
+          <div class="card-title">IBPS PO 2023 Previous Year Paper</div>
+          <div class="card-exam">Banking • IBPS PO</div>
+          <div class="card-tags">
+            <span class="tag">Question Paper</span>
+            <span class="tag green">Solved</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-bottom">
+        <span class="card-meta">📅 2023 • 📄 32 pages</span>
+        <a href="papers/ibps-po-2023.pdf" class="download-btn" download>⬇ Download</a>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="material-card" data-type="pdf" data-exam="rrb">
+      <div class="card-top">
+        <div class="card-type-icon type-pdf">📕</div>
+        <div class="card-info">
+          <div class="card-title">Railway GK Capsule 2024</div>
+          <div class="card-exam">RRB NTPC • General Knowledge</div>
+          <div class="card-tags">
+            <span class="tag">PDF Book</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-bottom">
+        <span class="card-meta">📅 2024 • 📄 56 pages</span>
+        <a href="pdfs/rrb-gk-2024.pdf" class="download-btn" download>⬇ Download</a>
+      </div>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="material-card" data-type="notes" data-exam="ssc">
+      <div class="card-top">
+        <div class="card-type-icon type-notes">📒</div>
+        <div class="card-info">
+          <div class="card-title">SSC Maths Shortcuts & Tricks</div>
+          <div class="card-exam">SSC • Mathematics</div>
+          <div class="card-tags">
+            <span class="tag">Notes</span>
+            <span class="tag green">Tricks</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-bottom">
+        <span class="card-meta">📅 2024 • 📄 36 pages</span>
+        <a href="notes/ssc-maths-tricks.pdf" class="download-btn green" download>⬇ Download</a>
+      </div>
+    </div>
+
+    <!-- Card 6 -->
+    <div class="material-card" data-type="qp" data-exam="neet">
+      <div class="card-top">
+        <div class="card-type-icon type-qp">📝</div>
+        <div class="card-info">
+          <div class="card-title">NEET 2023 Official Question Paper</div>
+          <div class="card-exam">NEET • Biology/Physics/Chemistry</div>
+          <div class="card-tags">
+            <span class="tag">Question Paper</span>
+            <span class="tag green">Answer Key</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-bottom">
+        <span class="card-meta">📅 2023 • 📄 40 pages</span>
+        <a href="papers/neet-2023.pdf" class="download-btn" download>⬇ Download</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="section-title">ℹ️ Is Website Ke Baare Mein</div>
+  <div class="section-sub">Yahan study material bilkul free available hai</div>
+  <p style="color: var(--muted); max-width: 600px; line-height: 1.9;">
+    Is website ka maksad hai ki har student ko quality study material free mein mile. 
+    Chahe tum SSC ki taiyari kar rahe ho ya UPSC ki — previous year papers, notes aur 
+    PDF books yahan se download kar sakte ho. Koi payment nahi, koi registration nahi.
+  </p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p style="font-family:'Baloo 2',cursive; font-size:1.1rem; color:var(--accent); margin-bottom:8px;">ExamZone</p>
+  <p>© 2024 ExamZone • Sabke liye free study material</p>
+  <p style="margin-top:8px;">
+    <a href="#">Privacy Policy</a> &nbsp;|&nbsp;
+    <a href="#">Contact</a> &nbsp;|&nbsp;
+    <a href="#">Upload Suggestions</a>
+  </p>
+</footer>
+
+<script>
+  function filterCards(type, btn) {
+    document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.material-card').forEach(card => {
+      if (type === 'all' || card.dataset.type === type) {
+        card.style.display = '';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  function searchMaterial() {
+    const q = document.getElementById('searchInput').value.toLowerCase();
+    document.querySelectorAll('.material-card').forEach(card => {
+      const text = card.innerText.toLowerCase();
+      card.style.display = text.includes(q) ? '' : 'none';
+    });
+    document.getElementById('papers').scrollIntoView({ behavior: 'smooth' });
+  }
+
+  document.getElementById('searchInput').addEventListener('keydown', e => {
+    if (e.key === 'Enter') searchMaterial();
+  });
+</script>
+
+</body>
+</html>
